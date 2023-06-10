@@ -1,4 +1,4 @@
-![Microsoft Visio Drawing](https://github.com/DDobrovolskiy/project_cloud_k8s/assets/65667662/abaf57e8-fa59-4e6c-ad02-411d094bcbf3)
+![Microsoft Visio Drawing](https://github.com/DDobrovolskiy/project_cloud_k8s/assets/65667662/601698eb-d20b-4a87-a1f2-add974d5d469)
 
 ### Ready:
 - [x] Project scheme;
