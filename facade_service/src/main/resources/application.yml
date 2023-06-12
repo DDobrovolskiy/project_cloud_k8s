@@ -1,0 +1,5 @@
+server:
+  port: ${SERVER_PORT:8081}
+  shutdown: graceful
+instance:
+  test: ${SERVER_TEST_INSTANCE:http://localhost:8080}
