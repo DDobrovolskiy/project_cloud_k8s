@@ -11,7 +11,7 @@
 kubectl create namespace my-ns
 kubectl config set-context --current --namespace=my-ns
 ```
-Для тестов выведен сервис фасада, что бы получит его урл:
+Для тестов выведен сервис фасада, чтобы получить его урл:
 ```shell
 minikube service facade-service-out -n my-ns
 ```
