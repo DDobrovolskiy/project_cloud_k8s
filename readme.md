@@ -24,3 +24,4 @@ minikube service facade-service-out -n my-ns
 ### Link:
 - Ссылка на настройку двух сервисов https://habr.com/ru/articles/487922/
 - Kubernetes NodePort vs LoadBalancer vs Ingress? Когда и что использовать? https://habr.com/ru/companies/southbridge/articles/358824/
+- https://max-ko.ru/75-ustanovka-minikube.html
