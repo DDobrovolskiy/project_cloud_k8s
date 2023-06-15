@@ -1,6 +1,15 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: test-config
+data:
+  SERVER_PORT: "8080"
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
   name: facade-config
 data:
   SERVER_TEST_INSTANCE: "http://test-service:8080"

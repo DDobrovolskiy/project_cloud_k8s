@@ -21,6 +21,10 @@ minikube service facade-service-out -n my-ns
 - docker image build . -t cloud-test:0.0.1
 - docker image build . -t cloud-facade:0.0.1
 
+### Helm
+Установка:
+- https://linux.how2shout.com/how-to-install-helm-on-ubuntu-22-04-lts-jammy/
+
 ### Link:
 - Ссылка на настройку двух сервисов https://habr.com/ru/articles/487922/
 - Kubernetes NodePort vs LoadBalancer vs Ingress? Когда и что использовать? https://habr.com/ru/companies/southbridge/articles/358824/
