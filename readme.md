@@ -6,7 +6,7 @@
 
 ### Настройка minikube:
 - https://tproger.ru/articles/kak-ustanovit-kubernetes-s-minikube-na-linux/  
-Создадим неймспейс и установим его как текущий:
+Создадим неймспейс и установим его как текущий (не обязательно):
 ```shell
 kubectl create namespace my-ns
 kubectl config set-context --current --namespace=my-ns
@@ -16,6 +16,11 @@ kubectl config set-context --current --namespace=my-ns
 minikube service facade-service-out -n my-ns
 ```
 В результате получваем ответы с http://192.168.59.100:31130 и http://192.168.59.100:31130/test
+
+DASHBOARD:
+```shell
+kubectl create namespace kubernetes-dashboard
+```
 
 ### Docker images
 - docker image build . -t cloud-test:0.0.1
@@ -29,3 +34,4 @@ minikube service facade-service-out -n my-ns
 - Ссылка на настройку двух сервисов https://habr.com/ru/articles/487922/
 - Kubernetes NodePort vs LoadBalancer vs Ingress? Когда и что использовать? https://habr.com/ru/companies/southbridge/articles/358824/
 - https://max-ko.ru/75-ustanovka-minikube.html
+- Создание пакетов для Kubernetes с Helm: структура чарта и шаблонизация https://habr.com/ru/companies/flant/articles/423239/

@@ -1,6 +1,6 @@
 apiVersion: v2
-name: my-chart
-version: 1.0.0
+name: app-chart
+version: 0.0.1
 description: project cloud k8s
 type: application
 sources:
@@ -8,4 +8,4 @@ sources:
 maintainers:
   - name: Dmitry Dobrovolsky
     email: dda.90@mail.ru
-appVersion: 1.0.0
+appVersion: 0.0.1

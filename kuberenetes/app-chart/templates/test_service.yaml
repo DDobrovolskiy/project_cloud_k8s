@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{.Values.test.config.name}}
+data:
+  SERVER_PORT: "{{.Values.test.port}}"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "app-chart.test.name" . }}      #название пода
+  labels:
+    environment: "dev"
+    release: "stable"
+    app: {{ include "app-chart.test.name" . }}   #название приложения
+spec:
+  replicas: 1             #количество реплик
+  strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 100%
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      environment: "dev"
+      release: "stable"
+      app: {{ include "app-chart.test.name" . }}   #название приложения
+  template:
+    metadata:
+      labels:
+        environment: "dev"
+        release: "stable"
+        app: {{ include "app-chart.test.name" . }}   #название приложения
+    spec:
+      containers:
+        - name: {{ include "app-chart.test.name" . }}
+          image: {{.Values.test.image.name}}:{{.Values.test.image.tag}}
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: {{.Values.test.config.name}}  #Ссылаемся на уже созданный ConfigMap
+          ports:
+            - containerPort: {{.Values.test.port}}
+              protocol: TCP
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#            initialDelaySeconds: 5  #задежка перед первой проверкой
+#            periodSeconds: 3        #интервал между проверками
+#          resources:
+#            limits:
+#              memory: "256Mi"
+#              cpu: "200m"
+#            requests:
+#              memory: "128Mi"
+#              cpu: "50m"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Values.test.service.name}}
+  labels:
+    environment: "dev"
+    release: "stable"
+    chart: {{.Chart.Name}}-{{.Chart.Version}}
+    app: {{.Values.test.service.name}}
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: {{.Values.test.port}}        #выходной порт сервиса
+      protocol: TCP
+      targetPort: {{.Values.test.port}}  #порт облуживаемых подов
+  selector:
+    environment: "dev"
+    release: "stable"
+    app: {{ include "app-chart.test.name" . }}   #название приложения
