@@ -10,7 +10,7 @@
     </parent>
     <groupId>ru.cloud</groupId>
     <artifactId>cloud-test</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>cloud-test</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -21,6 +21,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-kubernetes-client-config</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

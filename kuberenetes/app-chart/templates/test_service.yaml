@@ -4,6 +4,20 @@ metadata:
   name: {{.Values.test.config.name}}
 data:
   SERVER_PORT: "{{.Values.test.port}}"
+  CM_NAME: {{.Values.test.config.config}}
+  NAME: {{ include "app-chart.test.name" . }}
+  CONFIG_MAP_NAME: {{.Values.test.config.name}}
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{.Values.test.secret.name}}
+type: Opaque
+stringData:
+  SECRET: {{ .Values.test.secret.secret }}
+  SECRETE_NAME: {{.Values.test.secret.name}}
 
 ---
 
@@ -15,6 +29,7 @@ metadata:
     environment: "dev"
     release: "stable"
     app: {{ include "app-chart.test.name" . }}   #название приложения
+    chart: {{.Chart.Name}}-{{.Chart.Version}}
 spec:
   replicas: 1             #количество реплик
   strategy:
@@ -33,6 +48,7 @@ spec:
         environment: "dev"
         release: "stable"
         app: {{ include "app-chart.test.name" . }}   #название приложения
+        chart: {{.Chart.Name}}-{{.Chart.Version}}
     spec:
       containers:
         - name: {{ include "app-chart.test.name" . }}
@@ -41,9 +57,14 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{.Values.test.config.name}}  #Ссылаемся на уже созданный ConfigMap
+            - secretRef:
+                name: {{.Values.test.secret.name}}
           ports:
             - containerPort: {{.Values.test.port}}
               protocol: TCP
+          env:
+            - name: SECRET_TEST
+              value: secret   #Setting secret from Secret
 #          readinessProbe:
 #            httpGet:
 #              path: /actuator/health

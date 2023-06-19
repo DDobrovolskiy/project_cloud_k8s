@@ -21,6 +21,11 @@ DASHBOARD:
 ```shell
 kubectl create namespace kubernetes-dashboard
 ```
+### Create Secrets
+```shell
+echo -n 'root' | base64
+#cm9vdA==
+```
 
 ### Docker images
 - docker image build . -t cloud-test:0.0.1

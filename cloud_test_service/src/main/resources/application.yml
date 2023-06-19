@@ -1,3 +1,17 @@
 server:
   port: ${SERVER_PORT:8080}
   shutdown: graceful
+spring:
+  application:
+    name: ${NAME:test-service}
+  cloud:
+    kubernetes:
+      config:
+        namespace: default
+        sources:
+          - name: ${CONFIG_MAP_NAME:test-config}
+          - name: ${SECRETE_NAME:test-secret}
+instance:
+  name: ${CM_NAME:default_name}
+  secret: ${SECRET:default_secret}
+  secret_test: ${SECRET_TEST:default_secret_test}

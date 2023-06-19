@@ -4,7 +4,7 @@ test:
     name: test-service
   image:
     name: ddobrovolskiy/cloud-test
-    tag: 0.0.1
+    tag: 0.0.3
   hpa:
     enabled: false
     minReplicas: 1
@@ -12,6 +12,10 @@ test:
     targetCPUUtilizationPercentage: 75
   config:
     name: test-config
+    config: config-config
+  secret:
+    name: test-secret
+    secret: secret-secret
   port: 8080
 
 facade:

@@ -8,6 +8,10 @@ public class TestControllerTest {
     @Test
     public void getTest() {
         TestController testController = new TestController();
-        Assert.assertEquals(testController.getTest(), "GetTest");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("null").append(System.lineSeparator());
+        stringBuilder.append("null").append(System.lineSeparator());
+        stringBuilder.append("GetTest");
+        Assert.assertEquals(testController.getTest(), stringBuilder.toString());
     }
 }
