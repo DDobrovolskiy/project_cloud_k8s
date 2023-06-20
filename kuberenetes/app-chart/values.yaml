@@ -4,7 +4,7 @@ test:
     name: test-service
   image:
     name: ddobrovolskiy/cloud-test
-    tag: 0.0.3
+    tag: 0.0.4
   hpa:
     enabled: false
     minReplicas: 1
@@ -24,11 +24,11 @@ facade:
     name: facade-service
   image:
     name: ddobrovolskiy/cloud-facade
-    tag: 0.0.1
+    tag: 0.0.2
   hpa:
     enabled: false
     minReplicas: 1
-    maxReplicas: 2
+    maxReplicas: 1
     targetCPUUtilizationPercentage: 75
   config:
     name: facade-config

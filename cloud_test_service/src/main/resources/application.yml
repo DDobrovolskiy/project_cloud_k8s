@@ -15,3 +15,15 @@ instance:
   name: ${CM_NAME:default_name}
   secret: ${SECRET:default_secret}
   secret_test: ${SECRET_TEST:default_secret_test}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true

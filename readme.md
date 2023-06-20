@@ -35,6 +35,27 @@ echo -n 'root' | base64
 Установка:
 - https://linux.how2shout.com/how-to-install-helm-on-ubuntu-22-04-lts-jammy/
 
+### Prometheus and Grafana setup in Minikube
+https://blog.marcnuri.com/prometheus-grafana-setup-minikube  
+```yaml
+		- job_name: testservice
+		  metrics_path: '/actuator/prometheus'
+		  scrape_interval: 1s
+		  static_configs:
+		    - targets: ['test-service:8080']
+		      labels:
+		        application: 'test-service'
+		- job_name: facadeservice
+		  metrics_path: '/actuator/prometheus'
+		  scrape_interval: 1s
+		  static_configs:
+		    - targets: ['facade-service:8080']
+		      labels:
+		        application: 'facade-service'
+```
+https://grafana.com/grafana/dashboards/11378-justai-system-monitor/  
+DASHBOARD ID: 11378
+
 ### Link:
 - Ссылка на настройку двух сервисов https://habr.com/ru/articles/487922/
 - Kubernetes NodePort vs LoadBalancer vs Ingress? Когда и что использовать? https://habr.com/ru/companies/southbridge/articles/358824/
